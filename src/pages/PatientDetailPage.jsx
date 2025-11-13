@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { PageTitle } from "../components/common/Common";
 
 const PatientDetailPage = ({patientList}) => {
   const {id} = useParams()
@@ -7,6 +8,7 @@ const PatientDetailPage = ({patientList}) => {
   
   return (
     <section>
+      <PageTitle title='Detalle de Paciente'/>
       <h1 className="text-xl bold mb-2">{PATIENT.nombrePaciente}</h1>
       <ul className="flex gap-3">
         <li className="uppercase text-xs">número paciente: {PATIENT.numeroPaciente}</li>

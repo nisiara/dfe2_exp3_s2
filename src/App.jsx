@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import AppRoutes from './routes/AppRoutes'
+import Header from './layout/Header'
+import Footer from './layout/Footer'
 
 const App = () => {
 
@@ -26,7 +28,11 @@ const App = () => {
 
 
   return (
-    <AppRoutes patientList={data} />
+    <>
+      <Header/>
+      <AppRoutes patientList={data} />
+      <Footer/>
+    </>
   )
 }
 

@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { PageTitle } from "../components/common/Common";
 const PatientsPage = ({patientList}) => {
 
   const tableStyles = {
@@ -13,34 +14,38 @@ const PatientsPage = ({patientList}) => {
   console.log('dataList', patientList)
 
   return ( 
-  <div className={tableStyles.tableContainer}>
-    <table className={tableStyles.table}>
-      <thead className={tableStyles.thead}>
-        <tr>
-          <th className={tableStyles.theadCell}>Número Paciente</th>
-          <th className={tableStyles.theadCell}>Nombre Paciente</th>
-          <th className={tableStyles.theadCell}>Edad</th>
-          <th className={tableStyles.theadCell}>Fecha Consulta</th>
-          <th className={tableStyles.theadCell}>Médico</th>
-          <th className={tableStyles.theadCell}></th>
-        </tr>
-      </thead>
-      <tbody className={tableStyles.tbody}>
-        {patientList.map( patient => (
-          <tr key={patient.numeroPaciente}>
-            <td className={tableStyles.cell}>{patient.numeroPaciente}</td>
-            <td className={tableStyles.cell}>{patient.nombrePaciente}</td>
-            <td className={tableStyles.cell}>{patient.edad}</td>
-            <td className={tableStyles.cell}>{patient.atenciones[0].fecha}</td>
-            <td className={tableStyles.cell}>{patient.atenciones[0].nombreMedico}</td>
-            <td className={tableStyles.cell}><Link to={`/patients/${patient.numeroPaciente.toLowerCase()}`} className="text-xs underline">Ver Paciente</Link></td>
-          </tr>
-        ))}
-        
-      </tbody>
-    </table>
-  </div>
-)};
+    <section>
+      <PageTitle title='Lista de Pacientes'/>
+      <div className={tableStyles.tableContainer}>
+        <table className={tableStyles.table}>
+          <thead className={tableStyles.thead}>
+            <tr>
+              <th className={tableStyles.theadCell}>Número Paciente</th>
+              <th className={tableStyles.theadCell}>Nombre Paciente</th>
+              <th className={tableStyles.theadCell}>Edad</th>
+              <th className={tableStyles.theadCell}>Fecha Consulta</th>
+              <th className={tableStyles.theadCell}>Médico</th>
+              <th className={tableStyles.theadCell}></th>
+            </tr>
+          </thead>
+          <tbody className={tableStyles.tbody}>
+            {patientList.map( patient => (
+              <tr key={patient.numeroPaciente}>
+                <td className={tableStyles.cell}>{patient.numeroPaciente}</td>
+                <td className={tableStyles.cell}>{patient.nombrePaciente}</td>
+                <td className={tableStyles.cell}>{patient.edad}</td>
+                <td className={tableStyles.cell}>{patient.atenciones[0].fecha}</td>
+                <td className={tableStyles.cell}>{patient.atenciones[0].nombreMedico}</td>
+                <td className={tableStyles.cell}><Link to={`/patients/${patient.numeroPaciente.toLowerCase()}`} className="text-xs underline">Ver Paciente</Link></td>
+              </tr>
+            ))}
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )
+};
 
  
 export default PatientsPage;
