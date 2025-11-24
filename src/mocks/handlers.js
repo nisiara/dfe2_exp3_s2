@@ -2,430 +2,426 @@ import { HttpResponse, delay, graphql} from "msw";
 
 const eventos = [
   {
-    id: "EVE-001A",
-    nombre_evento: "Festival de Jazz en el Parque",
-    tipo_evento: "musica",
-    fecha: "2026-03-15",
-    locacion: "Parque O'Higgins",
+    id: "PT-001",
+    nombre_evento: "Soda Stereo - Ecos",
+    tipo_evento: "concierto",
+    fecha: "2026-03-26",
+    locacion: "Movistar Arena",
     ciudad: "Santiago",
-    hora: "19:30",
-    descripcion: "Una noche mágica de improvisación y ritmos con las mejores bandas de jazz nacional e internacional.",
-    auspiciadores: ["Cerveza Kross", "Municipalidad de Santiago", "Banco de Chile"],
+    hora: "21:00",
+    descripcion: "Espectáculo audiovisual y musical en homenaje a la legendaria banda Soda Stereo.",
+    auspiciadores: ["Banco de Chile", "Movistar", "Cerveza Kross"],
     precios: {
-      galeria: 15000,
-      tribuna: 25000,
-      cancha: 35000,
-      vip: 60000
-    },
-    detalles_artista: {
-      nombre: "Jazz Fusion Collective",
-      pais_origen: "Chile",
-      generos: ["Jazz", "Fusión"],
-      miembros: 5,
-      discos_destacados: ["Ritmos del Sur"]
-    }
-  },
-  {
-    id: "EVE-002B",
-    nombre_evento: "Partido Clásico de Fútbol: Univ. vs Colo",
-    tipo_evento: "deporte",
-    fecha: "2026-04-01",
-    locacion: "Estadio Nacional Julio Martínez",
-    ciudad: "Santiago",
-    hora: "17:00",
-    descripcion: "El encuentro más esperado de la temporada: un clásico imperdible del fútbol chileno.",
-    auspiciadores: ["Gatorade", "Bci", "Movistar"],
-    precios: {
-      galeria: 12000,
-      tribuna: 30000,
-      pacifico: 55000,
+      platea_alta: 40000,
+      platea_baja: 60000,
+      cancha: 85000,
       vip: 120000
     },
     detalles_artista: {
-      nombre: "Clubes Chilenos",
-      disciplina: "Fútbol",
-      liga: "Primera División",
-      equipos: ["Universidad de Chile", "Colo-Colo"]
-    }
-  },
-  {
-    id: "EVE-003C",
-    nombre_evento: "Gira Mundial: The Rock Legends",
-    tipo_evento: "concierto",
-    fecha: "2026-05-20",
-    locacion: "Movistar Arena",
-    ciudad: "Santiago",
-    hora: "21:00",
-    descripcion: "La banda de rock más grande de los 80 vuelve a Chile con todos sus éxitos.",
-    auspiciadores: ["Cerveza Kross", "Ticketmaster", "Entel"],
-    precios: {
-      platea_alta: 45000,
-      platea_baja: 65000,
-      cancha: 80000,
-      vip: 150000
+      nombre: "Soda Stereo (Homenaje)",
+      pais_origen: "Argentina",
+      generos: ["Rock Latino", "Pop"],
+      tour: "Ecos"
     },
-    detalles_artista: {
-      nombre: "The Rock Legends",
-      pais_origen: "Reino Unido",
-      generos: ["Hard Rock", "Heavy Metal"],
-      miembros: 4,
-      discos_destacados: ["Electric Storm", "Road to Eternity"]
-    }
+    imagen_url: "https://static.ptocdn.net/images/eventos/lot210_calugalistado.jpg"
   },
   {
-    id: "EVE-004D",
-    nombre_evento: "Estreno de la Obra: El Jardín Secreto",
-    tipo_evento: "teatro",
-    fecha: "2026-06-05",
-    locacion: "Teatro Municipal de Las Condes",
-    ciudad: "Santiago",
-    hora: "20:30",
-    descripcion: "Una conmovedora adaptación de la novela clásica al formato teatral.",
-    auspiciadores: ["Municipalidad de Las Condes", "Ministerio de las Culturas"],
-    precios: {
-      galeria: 10000,
-      platea_baja: 22000,
-      palco: 35000
-    },
-    detalles_artista: {
-      nombre: "Compañía Teatral Ícaro",
-      director: "Elena Rojas",
-      actores_principales: ["Javier Soto", "Catalina Méndez"]
-    }
-  },
-  {
-    id: "EVE-005E",
-    nombre_evento: "Concierto Íntimo: Sofía del Mar",
-    tipo_evento: "musica",
-    fecha: "2026-07-10",
-    locacion: "Teatro Caupolicán",
-    ciudad: "Santiago",
-    hora: "20:00",
-    descripcion: "La cantautora nacional presenta su nuevo álbum, 'Amanecer'.",
-    auspiciadores: ["Radio Cooperativa", "Cerveza Austral"],
-    precios: {
-      galeria: 18000,
-      cancha: 30000,
-      palco: 50000
-    },
-    detalles_artista: {
-      nombre: "Sofía del Mar",
-      pais_origen: "Chile",
-      generos: ["Folk", "Pop"],
-      discos_destacados: ["Amanecer", "Raíces"]
-    }
-  },
-  {
-    id: "EVE-006F",
-    nombre_evento: "Campeonato Nacional de Natación",
-    tipo_evento: "deporte",
-    fecha: "2026-08-03",
-    locacion: "Centro Acuático Estadio Nacional",
-    ciudad: "Santiago",
-    hora: "10:00",
-    descripcion: "Los mejores nadadores del país compiten por el título nacional.",
-    auspiciadores: ["Speedo", "Banco Estado"],
-    precios: {
-      general: 5000,
-      preferencial: 8000
-    },
-    detalles_artista: {
-      nombre: "Federación Chilena de Natación",
-      disciplina: "Natación",
-      atletas_clave: ["Martín B.", "Valentina G."]
-    }
-  },
-  {
-    id: "EVE-007G",
-    nombre_evento: "Noche de Ópera: La Traviata",
-    tipo_evento: "musica",
-    fecha: "2026-09-12",
-    locacion: "Teatro Municipal de Santiago",
-    ciudad: "Santiago",
-    hora: "19:00",
-    descripcion: "Una producción clásica de la célebre ópera de Verdi.",
-    auspiciadores: ["CorpArtes", "Fundación Cultural de Santiago"],
-    precios: {
-      galeria: 18000,
-      anfiteatro: 35000,
-      platea_central: 60000,
-      palco: 100000
-    },
-    detalles_artista: {
-      nombre: "Orquesta Filarmónica de Santiago",
-      compositor: "Giuseppe Verdi",
-      director: "Maestro Paolo Rossi"
-    }
-  },
-  {
-    id: "EVE-008H",
-    nombre_evento: "Monólogo de Comedia: La Vida Moderna",
-    tipo_evento: "teatro",
-    fecha: "2026-10-25",
-    locacion: "Gran Arena Monticello",
-    ciudad: "Mostazal",
-    hora: "22:00",
-    descripcion: "El comediante más popular del momento reflexiona con humor sobre el día a día.",
-    auspiciadores: ["Gran Arena Monticello", "Pisco Mistral"],
+    id: "PT-002",
+    nombre_evento: "Festival del Huaso de Olmué",
+    tipo_evento: "festival",
+    fecha: "2026-01-15",
+    locacion: "Anfiteatro Parque El Patagual",
+    ciudad: "Olmué",
+    hora: "21:30",
+    descripcion: "Tradicional festival de folclore y música popular chilena.",
+    auspiciadores: ["Municipalidad de Olmué", "TVN", "Entel"],
     precios: {
       general: 20000,
-      silver: 35000,
-      golden: 50000
-    },
-    detalles_artista: {
-      nombre: "Felipe Morán",
-      tipo: "Stand-Up Comedy",
-      giras_previas: ["Risas y Caos"]
-    }
-  },
-  {
-    id: "EVE-009I",
-    nombre_evento: "Electro Beat Fest - Edición Verano",
-    tipo_evento: "concierto",
-    fecha: "2027-01-20",
-    locacion: "Sede V Región (Por confirmar)",
-    ciudad: "Viña del Mar",
-    hora: "18:00",
-    descripcion: "El festival de música electrónica más grande de la costa central.",
-    auspiciadores: ["Heineken", "Red Bull", "Municipalidad de Viña del Mar"],
-    precios: {
-      preventa_general: 30000,
-      general: 40000,
-      vip: 75000
-    },
-    detalles_artista: {
-      nombre: "DJ Cosmic Rays & Amigos",
-      pais_origen: "USA/Chile",
-      generos: ["EDM", "Techno", "House"],
-      headliners: ["Cosmic Rays", "The Synthetik"]
-    }
-  },
-  {
-    id: "EVE-010J",
-    nombre_evento: "Torneo Internacional de Basketball",
-    tipo_evento: "deporte",
-    fecha: "2026-11-18",
-    locacion: "Movistar Arena",
-    ciudad: "Santiago",
-    hora: "20:00",
-    descripcion: "Chile se enfrenta a Argentina y Brasil en un triangular amistoso.",
-    auspiciadores: ["Nike", "Coca-Cola", "Ministerio del Deporte"],
-    precios: {
-      galeria: 8000,
-      platea_baja: 15000,
-      cancha: 25000
-    },
-    detalles_artista: {
-      nombre: "Selecciones de Baloncesto",
-      disciplina: "Baloncesto",
-      países: ["Chile", "Argentina", "Brasil"]
-    }
-  },
-  {
-    id: "EVE-011K",
-    nombre_evento: "Concierto: Los Héroes del Silencio (Tributo)",
-    tipo_evento: "musica",
-    fecha: "2026-03-22",
-    locacion: "Teatro Nescafé de las Artes",
-    ciudad: "Santiago",
-    hora: "21:30",
-    descripcion: "La mejor banda tributo a Héroes del Silencio en un show inolvidable.",
-    auspiciadores: ["Rock & Pop", "Banco de Chile"],
-    precios: {
-      platea_alta: 20000,
-      platea_baja: 30000
-    },
-    detalles_artista: {
-      nombre: "Avalancha Chilena",
-      tipo: "Tributo",
-      banda_original: "Héroes del Silencio"
-    }
-  },
-  {
-    id: "EVE-012L",
-    nombre_evento: "Maratón de Santiago 2026",
-    tipo_evento: "deporte",
-    fecha: "2026-04-09",
-    locacion: "Calles de Santiago",
-    ciudad: "Santiago",
-    hora: "08:00",
-    descripcion: "La carrera más grande de Chile con circuitos de 42k, 21k y 10k.",
-    auspiciadores: ["Adidas", "Entel", "Municipalidad de Santiago"],
-    precios: {
-      inscripcion_42k: 45000,
-      inscripcion_21k: 35000,
-      inscripcion_10k: 25000
-    },
-    detalles_artista: {
-      nombre: "Deportistas y Runners",
-      disciplina: "Atletismo",
-      distancias: ["42k", "21k", "10k"]
-    }
-  },
-  {
-    id: "EVE-013M",
-    nombre_evento: "Gala de Ballet: El Lago de los Cisnes",
-    tipo_evento: "teatro",
-    fecha: "2026-05-10",
-    locacion: "Teatro Municipal de Viña del Mar",
-    ciudad: "Viña del Mar",
-    hora: "19:00",
-    descripcion: "El clásico ballet con la Orquesta Filarmónica de Viña del Mar.",
-    auspiciadores: ["Municipalidad de Viña del Mar", "Fundación Ballet Chile"],
-    precios: {
-      general: 15000,
-      preferencial: 28000,
       palco: 45000
     },
     detalles_artista: {
-      nombre: "Ballet Nacional de Chile",
-      compositor: "Pyotr Ilyich Tchaikovsky",
-      bailarina_principal: "Isidora Pérez"
-    }
-  },
-  {
-    id: "EVE-014N",
-    nombre_evento: "Show de Stand Up: El Fin del Mundo",
-    tipo_evento: "teatro",
-    fecha: "2026-06-18",
-    locacion: "Sala SCD Bellavista",
-    ciudad: "Santiago",
-    hora: "21:00",
-    descripcion: "Un show de comedia negra e hilarante sobre la contingencia mundial.",
-    auspiciadores: ["Cerveza Kross", "SCD"],
-    precios: {
-      entrada_unica: 12000
+      nombre: "Varios Artistas",
+      pais_origen: "Chile/Internacional",
+      generos: ["Folclore", "Música Popular"],
+      duracion_dias: 4
     },
-    detalles_artista: {
-      nombre: "Mauricio Ríos",
-      tipo: "Stand-Up Comedy",
-      temas: ["Política", "Tecnología", "Cultura Pop"]
-    }
+    imagen_url: "https://static.ptocdn.net/images/eventos/olm034_calugalistado.jpg"
   },
   {
-    id: "EVE-015O",
-    nombre_evento: "Recital: La Voz del Sur",
-    tipo_evento: "musica",
-    fecha: "2026-07-28",
-    locacion: "Teatro Biobío",
-    ciudad: "Concepción",
-    hora: "20:30",
-    descripcion: "Un viaje por el folclor y la música de raíz chilena con la cantautora del sur.",
-    auspiciadores: ["Municipalidad de Concepción", "Fondo Nacional de la Música"],
-    precios: {
-      general: 10000,
-      platea: 18000
-    },
-    detalles_artista: {
-      nombre: "Isabel Montes",
-      pais_origen: "Chile",
-      generos: ["Folclor", "Música de Raíz"],
-      instrumento: "Guitarra"
-    }
-  },
-  {
-    id: "EVE-016P",
-    nombre_evento: "Copa Chile de eSports: LoL Final",
-    tipo_evento: "deporte",
-    fecha: "2026-08-30",
+    id: "PT-004",
+    nombre_evento: "Jurassic World The Experience",
+    tipo_evento: "entretencion",
+    fecha: "2025-11-25",
     locacion: "Movistar Arena",
     ciudad: "Santiago",
-    hora: "16:00",
-    descripcion: "La final del campeonato nacional de League of Legends (LoL).",
-    auspiciadores: ["ASUS ROG", "Claro Gaming", "Red Bull"],
+    hora: "10:00",
+    descripcion: "Una experiencia inmersiva con dinosaurios a tamaño real.",
+    auspiciadores: ["Universal Studios", "Banco Bci", "Ticketmaster"],
     precios: {
-      general: 10000,
-      preferencial: 18000,
-      vip_gamer: 35000
+      general: 12000,
+      vip_family: 30000
     },
     detalles_artista: {
-      nombre: "Equipos Profesionales de eSports",
-      disciplina: "eSports",
-      juego: "League of Legends"
-    }
-  },
-  {
-    id: "EVE-017Q",
-    nombre_evento: "Regreso a los 90's: Bandas Pop",
-    tipo_evento: "concierto",
-    fecha: "2026-09-05",
-    locacion: "Gran Arena Monticello",
-    ciudad: "Mostazal",
-    hora: "21:00",
-    descripcion: "Revive la época dorada del pop latino con invitados especiales.",
-    auspiciadores: ["Radio Carolina", "Banco Bci"],
-    precios: {
-      general: 25000,
-      golden: 40000,
-      palco: 60000
+      nombre: "Jurassic World",
+      tipo: "Exhibición",
+      franquicia: "Universal"
     },
-    detalles_artista: {
-      nombre: "Iconos del Pop Latino",
-      decada: "90s",
-      generos: ["Pop Latino", "Dance"]
-    }
+    imagen_url: "https://static.ptocdn.net/images/eventos/wal251_calugalistado.jpg"
   },
   {
-    id: "EVE-018R",
-    nombre_evento: "Feria del Libro de Santiago (FILSA)",
+    id: "PT-008",
+    nombre_evento: "31 Minutos - Radio Guaripolo 2",
     tipo_evento: "teatro",
-    fecha: "2026-10-12",
-    locacion: "Centro Cultural Estación Mapocho",
+    fecha: "2026-01-31",
+    locacion: "Teatro Caupolicán",
     ciudad: "Santiago",
-    hora: "11:00",
-    descripcion: "Encuentros con autores, lanzamientos y conversatorios literarios.",
-    auspiciadores: ["Cámara del Libro", "Ministerio de las Culturas"],
+    hora: "17:00",
+    descripcion: "El show infantil/familiar con los personajes de la famosa serie de televisión.",
+    auspiciadores: ["Municipalidad de Santiago", "Canal 13", "Soprole"],
     precios: {
-      entrada_diaria: 3000,
-      pase_semanal: 10000
+      galeria: 18000,
+      cancha: 28000,
+      palco: 45000
     },
     detalles_artista: {
-      nombre: "Autores Varios",
-      tipo: "Feria/Exposición",
-      invitado_estelar: "Gabriel García H."
-    }
+      nombre: "31 Minutos",
+      tipo: "Infantil/Familiar",
+      personaje_principal: "Tulio Triviño"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/wal259_calugalistado.jpg"
   },
   {
-    id: "EVE-019S",
-    nombre_evento: "Recital Punk Rock: La Rebeldía",
+    id: "PT-009",
+    nombre_evento: "Megadeth - This was our life 2026",
     tipo_evento: "concierto",
-    fecha: "2026-11-28",
+    fecha: "2026-05-04",
+    locacion: "Movistar Arena",
+    ciudad: "Santiago",
+    hora: "21:00",
+    descripcion: "La banda de thrash metal de Dave Mustaine en su gira mundial.",
+    auspiciadores: ["Hellfest", "Cerveza Kross", "Ticketmaster"],
+    precios: {
+      cancha: 55000,
+      platea_baja: 80000
+    },
+    detalles_artista: {
+      nombre: "Megadeth",
+      pais_origen: "Estados Unidos",
+      generos: ["Heavy Metal", "Thrash Metal"],
+      lider: "Dave Mustaine"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/rec103_calugalistado.jpg"
+  },
+  {
+    id: "PT-010",
+    nombre_evento: "Bad Bunny - DeBÍ TiRAR MáS FOToS World Tour",
+    tipo_evento: "concierto",
+    fecha: "2026-01-09",
+    locacion: "Quinta Vergara",
+    ciudad: "Viña del Mar",
+    hora: "22:00",
+    descripcion: "El artista puertorriqueño más influyente del género urbano.",
+    auspiciadores: ["Coca-Cola", "Spotify", "Municipalidad de Viña del Mar"],
+    precios: {
+      galeria: 50000,
+      platea_vip: 150000,
+      palco: 250000
+    },
+    detalles_artista: {
+      nombre: "Bad Bunny",
+      pais_origen: "Puerto Rico",
+      generos: ["Reggaetón", "Trap"],
+      album_promocion: "Un Verano Sin Ti"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/biz322_calugalistado.jpg"
+  },
+  {
+    id: "PT-011",
+    nombre_evento: "Doja Cat - Tour Ma Vie World Tour",
+    tipo_evento: "concierto",
+    fecha: "2026-02-10",
+    locacion: "Parque Padre Hurtado",
+    ciudad: "La Reina",
+    hora: "20:00",
+    descripcion: "Concierto al aire libre de la estrella pop y rapera estadounidense.",
+    auspiciadores: ["Pepsi", "Fashion Nova"],
+    precios: {
+      general: 60000,
+      vip_zona: 120000
+    },
+    detalles_artista: {
+      nombre: "Doja Cat",
+      pais_origen: "Estados Unidos",
+      generos: ["Pop", "Hip Hop", "R&B"],
+      tour: "Ma Vie"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/dgm158_calugalistado.jpg"
+  },
+  {
+    id: "PT-012",
+    nombre_evento: "Red Bull Batalla - Final Internacional 2026",
+    tipo_evento: "concierto",
+    fecha: "2026-04-11",
+    locacion: "Movistar Arena",
+    ciudad: "Santiago",
+    hora: "19:00",
+    descripcion: "La final mundial de la competencia de *freestyle* rap.",
+    auspiciadores: ["Red Bull", "Movistar", "Adidas"],
+    precios: {
+      galeria: 25000,
+      cancha: 40000
+    },
+    detalles_artista: {
+      nombre: "MC's Internacionales",
+      disciplina: "Freestyle Rap",
+      organizacion: "Red Bull"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/rdb003v2_calugalistado.jpg"
+  },
+  {
+    id: "PT-015",
+    nombre_evento: "Chico Trujillo + Los Mirlos",
+    tipo_evento: "concierto",
+    fecha: "2025-11-28",
+    locacion: "Factoría Italia",
+    ciudad: "Providencia",
+    hora: "20:00",
+    descripcion: "Una noche de cumbia chilena y peruana con dos grandes de la música tropical.",
+    auspiciadores: ["Cerveza Kross", "Municipalidad de Providencia"],
+    precios: {
+      general: 15000,
+      palco: 25000
+    },
+    detalles_artista: {
+      nombre: "Chico Trujillo / Los Mirlos",
+      pais_origen: "Chile/Perú",
+      generos: ["Cumbia", "Música Tropical"],
+      formato: "Doble Show"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/cco054_calugalistado.jpg"
+  },
+  {
+    id: "PT-016",
+    nombre_evento: "Glenn Hughes - Tour De Despedida",
+    tipo_evento: "concierto",
+    fecha: "2025-11-27",
+    locacion: "Teatro Coliseo",
+    ciudad: "Santiago",
+    hora: "21:00",
+    descripcion: "El ex bajista y vocalista de Deep Purple se despide de los escenarios chilenos.",
+    auspiciadores: ["Rock & Pop", "Banco de Chile"],
+    precios: {
+      galeria: 30000,
+      cancha: 45000
+    },
+    detalles_artista: {
+      nombre: "Glenn Hughes",
+      pais_origen: "Reino Unido",
+      generos: ["Hard Rock", "Blues Rock"],
+      banda_original: "Deep Purple"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/tsr092_calugalistado.jpg"
+  },
+  {
+    id: "PT-N01",
+    nombre_evento: "Festival de Guitarra Chile",
+    tipo_evento: "festival",
+    fecha: "2026-03-10",
+    locacion: "Teatro Oriente",
+    ciudad: "Providencia",
+    hora: "20:00",
+    descripcion: "El festival más grande de guitarra, con clínicas y conciertos de virtuosos nacionales e internacionales.",
+    auspiciadores: ["Gibson", "Fender"],
+    precios: {
+      general: 30000
+    },
+    detalles_artista: {
+      nombre: "Varios Guitarristas",
+      generos: ["Instrumental", "Rock", "Jazz"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/zoc057v2_calugalistado.jpg"
+  },
+  {
+    id: "PT-N02",
+    nombre_evento: "Gira Concierto Acústico Los Jaivas",
+    tipo_evento: "concierto",
+    fecha: "2025-11-29",
+    locacion: "Movistar Arena",
+    ciudad: "Santiago",
+    hora: "21:00",
+    descripcion: "La banda chilena en un formato íntimo, repasando sus grandes clásicos.",
+    auspiciadores: ["Banco de Chile", "Radio Futuro"],
+    precios: {
+      platea: 50000
+    },
+    detalles_artista: {
+      nombre: "Los Jaivas",
+      generos: ["Rock Progresivo", "Folclore Chileno"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/ppr026_calugalistado.jpg"
+  },
+  {
+    id: "PT-N03",
+    nombre_evento: "Monster Jam",
+    tipo_evento: "deporte",
+    fecha: "2025-12-05",
+    locacion: "Estadio Nacional Julio Martínez",
+    ciudad: "Santiago",
+    hora: "15:00",
+    descripcion: "El show de camionetas monstruo más famoso del mundo, con acrobacias extremas.",
+    auspiciadores: ["Ford", "Movistar", "Gatorade"],
+    precios: {
+      galeria: 15000,
+      campo: 40000
+    },
+    detalles_artista: {
+      nombre: "Monster Trucks",
+      disciplina: "Motorsport",
+      show: "Freestyle"
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/wal248_calugalistado.jpg"
+  },
+  {
+    id: "PT-N04",
+    nombre_evento: "Inti Illimani Histórico - Reencuentro",
+    tipo_evento: "concierto",
+    fecha: "2025-12-26",
+    locacion: "Teatro Caupolicán",
+    ciudad: "Santiago",
+    hora: "20:30",
+    descripcion: "Concierto que celebra la trayectoria del grupo emblema de la Nueva Canción Chilena.",
+    auspiciadores: ["Municipalidad de Santiago", "Canal 13"],
+    precios: {
+      galeria: 18000,
+      platea: 35000
+    },
+    detalles_artista: {
+      nombre: "Inti Illimani Histórico",
+      pais_origen: "Chile",
+      generos: ["Folclore", "Nueva Canción Chilena"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/emk131_calugalistado.jpg"
+  },
+  {
+    id: "PT-N05",
+    nombre_evento: "Pierce The Veil - I Can't Hear You World Tour",
+    tipo_evento: "concierto",
+    fecha: "2025-12-10",
+    locacion: "Teatro Coliseo",
+    ciudad: "Santiago",
+    hora: "20:00",
+    descripcion: "La banda estadounidense de post-hardcore en su regreso a Chile.",
+    auspiciadores: ["Rockaxis", "Converse"],
+    precios: {
+      general: 35000,
+      early_entry: 50000
+    },
+    detalles_artista: {
+      nombre: "Pierce The Veil",
+      pais_origen: "Estados Unidos",
+      generos: ["Post-Hardcore", "Emo"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/dgm143_calugalistado.jpg"
+  },
+  {
+    id: "PT-N06",
+    nombre_evento: "Perversión Fest",
+    tipo_evento: "festival",
+    fecha: "2025-12-13",
     locacion: "Teatro Caupolicán",
     ciudad: "Santiago",
     hora: "18:00",
-    descripcion: "Día de pura energía y *mosh pit* con las bandas de punk rock más importantes.",
-    auspiciadores: ["Cerveza Kross", "Punto Ticket"],
+    descripcion: "Festival de música alternativa y underground con bandas nacionales e internacionales.",
+    auspiciadores: ["Cerveza Kross"],
     precios: {
-      preventa: 18000,
       general: 25000
     },
     detalles_artista: {
-      nombre: "Los Inadaptados",
-      pais_origen: "Chile",
-      generos: ["Punk Rock", "Hardcore"],
-      teloneros: ["Furia Ciega"]
-    }
+      nombre: "Varios Artistas",
+      generos: ["Rock", "Underground"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/cco055_calugalistado.jpg"
   },
   {
-    id: "EVE-020T",
-    nombre_evento: "Mundial de Tenis Playa - Final",
-    tipo_evento: "deporte",
-    fecha: "2027-02-14",
-    locacion: "Playa Reñaca",
-    ciudad: "Viña del Mar",
-    hora: "15:00",
-    descripcion: "La final del circuito mundial de tenis en la arena de Reñaca.",
-    auspiciadores: ["Wilson", "Municipalidad de Viña del Mar", "Coca-Cola"],
+    id: "PT-N07",
+    nombre_evento: "Ritual of the Damned",
+    tipo_evento: "concierto",
+    fecha: "2026-01-20",
+    locacion: "Blondie",
+    ciudad: "Santiago",
+    hora: "22:00",
+    descripcion: "Noche de Metal Extremo y música oscura en el corazón de Santiago.",
+    auspiciadores: ["Nescafé", "Red Bull"],
     precios: {
-      general: 6000,
-      tribuna: 12000,
-      vip_cancha: 25000
+      general: 15000
     },
     detalles_artista: {
-      nombre: "Tenistas Profesionales",
-      disciplina: "Tenis Playa",
-      torneo: "ITF Beach Tennis"
-    }
+      nombre: "Bandas de Metal",
+      generos: ["Black Metal", "Death Metal"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/cco059_calugalistado.jpg"
+  },
+  {
+    id: "PT-N08",
+    nombre_evento: "Claudio Narea - Sudamerican Rocker",
+    tipo_evento: "concierto",
+    fecha: "2025-12-27",
+    locacion: "Teatro Nescafé de las Artes",
+    ciudad: "Santiago",
+    hora: "21:00",
+    descripcion: "El ex guitarrista de Los Prisioneros interpretando sus éxitos y material propio.",
+    auspiciadores: ["BancoEstado", "Radio Sonar"],
+    precios: {
+      platea_baja: 25000,
+      platea_alta: 18000
+    },
+    detalles_artista: {
+      nombre: "Claudio Narea",
+      pais_origen: "Chile",
+      generos: ["Rock", "Pop"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/cco057_calugalistado.jpg"
+  },
+  {
+    id: "PT-N09",
+    nombre_evento: "La Brígida Orquesta + Ana Tijoux",
+    tipo_evento: "concierto",
+    fecha: "2026-01-17",
+    locacion: "Anfiteatro Parque El Patagual",
+    ciudad: "Olmué",
+    hora: "20:00",
+    descripcion: "Combinación de jazz, hip-hop y líricas sociales con dos exponentes chilenos.",
+    auspiciadores: ["Fondart", "Pisco Mistral"],
+    precios: {
+      general: 20000
+    },
+    detalles_artista: {
+      nombre: "La Brígida Orquesta / Ana Tijoux",
+      pais_origen: "Chile",
+      generos: ["Hip Hop", "Jazz"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/cco074_calugalistado.jpg"
+  },
+  {
+    id: "PT-N10",
+    nombre_evento: "Love the 90's Chile",
+    tipo_evento: "festival",
+    fecha: "2026-03-20",
+    locacion: "Movistar Arena",
+    ciudad: "Santiago",
+    hora: "21:00",
+    descripcion: "El festival que trae de vuelta a las estrellas pop y dance más grandes de los años 90.",
+    auspiciadores: ["Coca-Cola", "Entel"],
+    precios: {
+      cancha: 45000,
+      platea: 65000,
+      vip: 80000
+    },
+    detalles_artista: {
+      nombre: "Artistas de los 90's",
+      generos: ["Pop", "Dance", "Eurodance"]
+    },
+    imagen_url: "https://static.ptocdn.net/images/eventos/wal257_calugalistado.jpg"
   }
 ]
 

@@ -30,7 +30,7 @@ const EventDetailPage = () => {
     return (
       <section>
         <PageTitle title='Detalle del Evento'/>
-        <p className="text-center text-slate-500">Cargando detalle del evento...</p>
+        <p className="text-center text-gray-950 font-bold">Cargando detalle del evento...</p>
       </section>
     );
   }
@@ -64,9 +64,9 @@ const EventDetailPage = () => {
   return (
     <section>
       <PageTitle title='Detalle del Evento'/>
-      <h1 className="text-2xl font-bold mb-5 text-slate-500">{EVENTO.nombre_evento}</h1>
+      <h1 className="text-2xl font-bold mb-5 text-gray-950">{EVENTO.nombre_evento}</h1>
       <aside className="grid grid-cols-12 gap-4">
-         <div className="py-4 col-span-12 md:col-span-6 text-slate-500 flex flex-col border b-color-slate-400">
+         <div className="py-4 col-span-12 md:col-span-6 text-gray-950 flex flex-col border b-color-gray-200">
           <span className="uppercase text-xs">tipo evento</span>
           <b className="text-2xl capitalize">{EVENTO.tipo_evento}</b>
         </div>

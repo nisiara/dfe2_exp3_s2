@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
 
 const navStyles = {
-  base: 'text-sm px-2 py-1 block font-medium text-slate-500',
-  active: 'border-b-2 border-b-slate-500'
+  base: 'text-md px-2 py-1 block font-bold text-gray-950',
+  active: 'border-b-2 border-b-gray-950'
 }
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
             <NavLink to="/" className={({isActive}) => `${navStyles.base} ${isActive ? navStyles.active : ''}`}>Inicio</NavLink>
           </li>
           <li>
-            <NavLink to="/events" end className={({isActive}) => `${navStyles.base} ${isActive ? navStyles.active : ''}`}>Lista de Eventos</NavLink>
+            <NavLink to="/events" end className={({isActive}) => `${navStyles.base} ${isActive ? navStyles.active : ''}`}>Ver todos los eventos</NavLink>
           </li>
           <li>
             <NavLink to="/about-us" className={({isActive}) => `${navStyles.base} ${isActive ? navStyles.active : ''}`}>Nosotros</NavLink>

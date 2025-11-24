@@ -16,7 +16,7 @@ const GQL_OBTENER_EVENTOS = gql`
       locacion
       ciudad
       fecha
-      
+      imagen_url
     }
   }
 `
