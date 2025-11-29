@@ -63,7 +63,7 @@ describe('Conjunto de test para componente Header: ', () => {
   });
 
 
-  it('Clase "active" en la ruta "Inicio"', () => {
+  it('Aplica clase "active" en la ruta "Inicio"', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <Header />
@@ -75,7 +75,7 @@ describe('Conjunto de test para componente Header: ', () => {
     expect(enlaceInicio).toHaveClass('text-md px-2 py-1 block font-bold text-gray-950');
   });
 
-  it('Clase "active" en la ruta de "Ver todos los eventos"', () => {
+  it('Aplica clase "active" en la ruta de "Ver todos los eventos"', () => {
     render(
       <MemoryRouter initialEntries={['/events']}>
         <Header />
@@ -88,7 +88,7 @@ describe('Conjunto de test para componente Header: ', () => {
   });
 
 
-  it('Clase "active" en la ruta "Nosotros" ', () => {
+  it('Aplica clase "active" en la ruta "Nosotros" ', () => {
     render(
       <MemoryRouter initialEntries={['/about-us']}>
         <Header />
@@ -99,7 +99,7 @@ describe('Conjunto de test para componente Header: ', () => {
     expect(navLinkNosotros).toHaveClass('border-b-2 border-b-gray-950'); 
   })
 
-  it('No plaicar estilo "active" en sub-rutas (atributo: end)', () => {
+  it('No aplaicar estilo "active" en sub-rutas (atributo: end)', () => {
     render(
       <MemoryRouter initialEntries={['/events/details']}>
         <Header />
