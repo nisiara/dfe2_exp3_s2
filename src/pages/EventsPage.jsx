@@ -5,10 +5,9 @@ const EventsPage = ({listaEventos, loading, error}) => {
   if (error) {
     return (
       <section>
-        
-        <div className="text-center text-red-500 p-4">
+        <div className="text-sm text-center text-red-900 p-4 bg-red-200 rounded-md">
           <p>Error al cargar la lista de eventos</p>
-          <p className="text-sm">{error.message}</p>
+          <p>{error.message}</p> 
         </div>
       </section>
     );

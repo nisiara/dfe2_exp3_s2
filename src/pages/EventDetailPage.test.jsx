@@ -6,9 +6,7 @@ import { MemoryRouter, Route, Routes } from 'react-router'
 
 import { gql } from '@apollo/client'
 
-
 import EventDetailPage from "./EventDetailPage";
-
 
 const GQL_OBTENER_EVENTO_POR_ID = gql`
   query ObtenerEventoPorID($id: String!) {

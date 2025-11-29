@@ -1,53 +1,95 @@
-# Desarrollo Frontend II - Experiencia 2 Semana 5
+# Desarrollo Frontend II - Experiencia 2 Semana 6
 ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?logo=vite&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss)
 ![GraphQL](https://img.shields.io/badge/GraphQL-3.4-E10098?logo=graphql)
 ![Apollo Client](https://img.shields.io/badge/Apollo-3.4-311C87?logo=apollographql)
 ![MSW](https://img.shields.io/badge/MSW-2.0.0-FF6A33?logo=mockserviceworker&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-4.0.14-6E9F18?logo=vitest)
+![Testing Library](https://img.shields.io/badge/Testing%20Library-16.3.0-E33332?logo=testinglibrary)
 
 
 
 ## 🎟️ Sistema de Eventos
 
-Aplicación web en React para listar y consultar el detalle de un catálogo de eventos culturales, deportivos y musicales usando GraphQL y Apollo Client, simulado con Mock Service Work
+Aplicación web en React para listar y consultar el detalle de un catálogo de eventos culturales, deportivos y musicales usando GraphQL y Apollo Client, simulado con Mock Service Worker. Incluye test unitarios realizado con Vitest y RTL
 
 ## 🚀 Características Principales
 
 - **Lista de Eventos**: Renderiza catálogo con nombre, tipo, locación y acceso al detalle.
-- **Detalle de Evento**: Vista individual con nombre y tipo (extensible a más datos del mock).
+- **Detalle de Evento**: Vista individual completa con información extendida y precios.
 - **GraphQL Mock**: Consultas `ObtenerEventos` y `ObtenerEventoPorID` servidas por MSW.
-- **Estados de Carga**: Mensajes diferenciados (lista vs detalle) con delays simulados (`delay` de MSW).
+- **Estados de Carga**: Mensajes diferenciados con delays simulados.
 - **Manejo de Errores**: Respuestas GraphQL con estructura `errors` para IDs inexistentes.
-- **Routing SPA**: Navegación con React Router (`/events` y `/events/:id`).
-- **Estilos**: Tailwind para layout responsivo y tipografía limpia.
+- **Routing SPA**: Navegación completa con React Router entre páginas.
+- **Estilos**: Tailwind CSS con diseño responsivo y componentes reutilizables.
+- **Testing Completo**: Suite de tests unitarios.
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **React** 19.2.0.
-- **React Router** 7.9.5 para navegación de rutas dinámicas.
-- **Apollo Client** para consumo de consultas GraphQL (mock backend).
-- **MSW (Mock Service Worker)** 2.12.1 para interceptar y responder consultas GraphQL.
-- **Tailwind CSS** 3.4.18 para estilos utilitarios.
-- **Vite** 7.2.2 como dev server y bundler rápido.
-- **ESLint / PostCSS** para calidad y procesado CSS.
+- **React** 19.2.0 con componentes funcionales y hooks.
+- **React Router** 7.9.5 para navegación SPA y rutas dinámicas.
+- **Apollo Client** 4.0.9 para gestión de estado GraphQL y cache.
+- **MSW (Mock Service Worker)** 2.12.1 para simulación de backend GraphQL.
+- **Tailwind CSS** 3.4.18 para estilos utilitarios y diseño responsivo.
+- **Vite** 7.2.2 como dev server, bundler y runner de tests.
+- **Vitest** 4.0.14 como framework de testing rápido y moderno.
+- **Testing Library** 16.3.0 para tests centrados en comportamiento del usuario.
+- **Happy DOM** como entorno DOM ligero para tests.
+- **ESLint / PostCSS** para calidad de código y procesado CSS.
 
 ## 📁 Estructura del Proyecto
 
 ```
 src/
 ├── pages/
-│   ├── EventsPage.jsx         # Lista de eventos
-│   ├── EventDetailPage.jsx    # Detalle de un evento
-│   ├── HomePage.jsx           # Portada
-│   ├── AboutUsPage.jsx        # Información institucional
+│   ├── EventsPage.jsx            # Lista de eventos
+│   ├── EventsPage.test.jsx       # Tests del listado
+│   ├── EventDetailPage.jsx       # Detalle de un evento
+│   ├── EventDetailPage.test.jsx  # Tests del detalle
+│   ├── HomePage.jsx              # Página de inicio
+│   ├── HomePage.test.jsx         # Tests de la portada
+│   └── AboutUsPage.jsx           # Información institucional
+├── layout/
+│   ├── Header.jsx                # Navegación principal
+│   ├── Header.test.jsx           # Tests del header
+│   ├── Footer.jsx                # Pie de página
+│   └── Footer.test.jsx           # Tests del footer
 ├── components/
-│   └── common/Common.jsx      # `PageTitle` y otros reutilizables
+│   ├── common/Common.jsx         # PageTitle y componentes reutilizables
+│   └── loading/Loading.jsx       # Indicador de carga
 ├── mocks/
-│   ├── handlers.js            # Definición de resolvers GraphQL mock
-│   └── browser.js             # Registro del service worker MSW
-├── routes/AppRoutes.jsx       # Definición de rutas SPA
+│   ├── handlers.js               # Resolvers GraphQL mock con datos completos
+│   └── browser.js                # Configuración MSW
+├── routes/AppRoutes.jsx          # Definición de rutas con lazy loading
+├── setupTests.js                 # Configuración de matchers para tests
+├── App.jsx                       # Componente principal con Apollo Provider
+└── App.test.jsx                  # Tests de integración de la app
 ```
+
+## 🧪 Testing
+
+### Cobertura
+- **100% cobertura** en statements, branches, functions y lines
+- **Tests unitarios** para todos los componentes individuales
+- **Tests de integración** para flujos completos de usuario
+- **Mocks de Apollo Client** para consultas GraphQL
+- **Testing de estados**: loading, error y success
+- **Testing de navegación** con MemoryRouter
+
+### Comandos de Testing
+```bash
+npm run test          # Ejecutar tests en modo watch
+npm run coverage      # Generar reporte de cobertura
+```
+
+### Archivos de Test
+- `HomePage.test.jsx` - Renderizado y elementos de la portada
+- `EventsPage.test.jsx` - Lista, imágenes, enlaces y estados
+- `EventDetailPage.test.jsx` - Detalle completo y manejo de errores
+- `Header.test.jsx` - Navegación activa y responsive (100% branches)
+- `Footer.test.jsx` - Enlaces y contenido del pie
+- `App.test.jsx` - Integración de componentes y props
 
 ## 🔐 Consultas GraphQL (Mock)
 
@@ -59,18 +101,31 @@ query ObtenerEventos {
     tipo_evento
     locacion
     ciudad
+    fecha
+    imagen_url
   }
 }
 
 query ObtenerEventoPorID($id: String!) {
   evento(id: $id) {
+    id
     nombre_evento
     tipo_evento
+    locacion
+    ciudad
+    fecha
+    hora
+    descripcion
+    imagen_url
+    precios {
+      platea
+      palco
+      galeria
+      vip
+    }
   }
 }
 ```
-
-El handler para detalle devuelve `errors` si el ID no existe (código `EVENTO NO ENCONTRADO`). Esto permite manejar “no encontrado” en la UI distinguiéndolo de errores de red.
 
 ## 🗃️ Datos Mock
 
@@ -82,7 +137,7 @@ Cada evento incluye (parcialmente mostrado en la UI):
 ## 🎨 Diseño y UX
 
 - **Feedback de Carga**: Mensajes centrados y neutrales con paleta slate.
-- **Semántica**: Secciones y encabezados claros (`PageTitle`).
+- **Semántica**: Secciones y encabezados claros.
 - **Responsive**: Grid y utilidades Tailwind para distintos breakpoints.
 - **Accesibilidad Básica**: Uso de `alt` en imágenes y enlaces descriptivos.
 
@@ -98,16 +153,33 @@ Actualmente, al consultar un ID inexistente, Apollo entra al branch `error` debi
 - Node.js 16+
 - npm / yarn / pnpm
 
-### Pasos
+### Instalación
 
 ```bash
-git clone https://github.com/nisiara/dfe2_exp2_s2.git
-cd dfe2_exp2_s2
+git clone https://github.com/nisiara/dfe2_exp3_s1.git
+cd dfe2_exp2_s6
 npm install
-npm run dev
 ```
 
+### Scripts Disponibles
+
+```bash
+npm run dev          # Servidor de desarrollo
+npm run build        # Build para producción
+npm run preview      # Preview del build
+npm run test         # Tests en modo watch
+npm run coverage     # Reporte de cobertura
+npm run lint         # Linter ESLint
+```
+
+### Desarrollo
 Abrir: `http://localhost:5173`
+
+### Rutas Disponibles
+- `/` - Página de inicio
+- `/events` - Lista de eventos
+- `/events/:id` - Detalle de evento
+- `/about-us` - Información institucional
 
 
 ---
