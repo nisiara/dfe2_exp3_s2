@@ -1,17 +1,6 @@
 import { Link } from "react-router";
 
-const EventsPage = ({listaEventos, loading, error}) => {
-
-  if (error) {
-    return (
-      <section>
-        <div className="text-sm text-center text-red-900 p-4 bg-red-200 rounded-md">
-          <p>Error al cargar la lista de eventos</p>
-          <p>{error.message}</p> 
-        </div>
-      </section>
-    );
-  }
+const EventsPage = ({listaEventos, loading}) => {
 
   return ( 
     <section>
@@ -31,10 +20,8 @@ const EventsPage = ({listaEventos, loading, error}) => {
                 </aside>
               ))}
             </section>
-            
           )
       }
-      
     </section>
   )
 };

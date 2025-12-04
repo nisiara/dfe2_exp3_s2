@@ -8,12 +8,12 @@ const EventDetailPage = React.lazy( () => import("../pages/EventDetailPage"))
 const AboutUsPage = React.lazy( () => import("../pages/AboutUsPage"))
 
 
-const AppRoutes = ({listaEventos, loading, error}) => {
+const AppRoutes = ({listaEventos, loading}) => {
   return ( 
     <Suspense fallback={<Loading />} >
       <Routes>
         <Route path="/" element={<HomePage/>} />
-        <Route path="/events" element={<EventsPage listaEventos={listaEventos} loading={loading} error={error}/>} />
+        <Route path="/events" element={<EventsPage listaEventos={listaEventos} loading={loading}/>} />
         <Route path="/events/:id" element={<EventDetailPage listaEventos={listaEventos} />} />
         <Route path="/about-us" element={<AboutUsPage />} />
       </Routes>

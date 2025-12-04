@@ -1,4 +1,4 @@
-import { HttpResponse, delay, graphql} from "msw";
+import { http, HttpResponse, delay, graphql} from "msw";
 
 const eventos = [
   {
@@ -426,9 +426,19 @@ const eventos = [
 ]
 
 export const handlers = [
+  
+
+  /* 
   graphql.query('ObtenerEventos', async () => {
     await delay(5000)
     return HttpResponse.json({data: {eventos}})
+  }), 
+  */
+
+  http.get("/api/eventos", async (req) => {
+    await delay(3000) 
+    console.log('req', req)
+    return HttpResponse.json(eventos)
 
   }),
 
