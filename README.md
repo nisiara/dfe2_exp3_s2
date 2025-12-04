@@ -93,21 +93,9 @@ npm run coverage      # Generar reporte de cobertura
 - `Footer.test.jsx` - Enlaces y contenido del pie
 - `App.test.jsx` - Integración de componentes y props
 
-## 🔐 Consultas GraphQL (Mock)
+## 🔐 Consultas GraphQL
 
 ```graphql
-query ObtenerEventos {
-  eventos {
-    id
-    nombre_evento
-    tipo_evento
-    locacion
-    ciudad
-    fecha
-    imagen_url
-  }
-}
-
 query ObtenerEventoPorID($id: String!) {
   evento(id: $id) {
     id
