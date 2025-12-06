@@ -10,7 +10,7 @@ const Header = () => {
     <header className="header mb-2 md:mb-10 md:flex align-middle py-6">
       <img src="/images/logo.svg" alt="Logo Punto Ticket" />
       
-      <nav className="md:ml-auto"> 
+      <nav className="menu md:ml-auto"> 
         <ul className="flex flex-col md:flex-row md:justify-normal align-middle gap-3">
           <li>
             <NavLink to="/" className={({isActive}) => `${navStyles.base} ${isActive ? navStyles.active : ''}`}>Inicio</NavLink>
